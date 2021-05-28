@@ -71,8 +71,8 @@ func EmitEvent(ctx context.Context, event string, payload interface{}) {
 	}
 }
 
-// Stop stops event loop and free resources.
-func Stop() {
+// Close stops event loop and free resources.
+func Close() {
 	driver.cancel()
 }
 

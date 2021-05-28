@@ -35,5 +35,8 @@ func main() {
 	eventdriver.EmitEvent(context.Background(), "example_event_occurred", ExampleEventPayload{
 		Nice: true,
 	})
+
+	// Shutdown event loop gracefully.
+	eventdriver.Close()
 }
 ```
