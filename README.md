@@ -20,7 +20,7 @@ func main() {
 	)
 
 	// Put handler somewhere in the use cases layer:
-	eventdriver.SubscribeHandler("example_event_occurred", func(ctx context.Context, v interface{}) error {
+	eventdriver.SubscribeHandler("example.event.occurred", func(ctx context.Context, v interface{}) error {
 		if payload, ok := v.(ExampleEventPayload); ok {
 			// Do some awesome handling of the event here
 			handleEvent(payload)
@@ -32,7 +32,7 @@ func main() {
 	})
 	
 	// Emit event in any place where such event can occur:
-	eventdriver.EmitEvent(context.Background(), "example_event_occurred", ExampleEventPayload{
+	eventdriver.EmitEvent(context.Background(), "example.event.occurred", ExampleEventPayload{
 		Nice: true,
 	})
 
