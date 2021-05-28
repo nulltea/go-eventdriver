@@ -3,7 +3,6 @@ package eventdriver
 import (
 	"context"
 
-	"github.com/op/go-logging"
 	"github.com/pkg/errors"
 )
 
@@ -41,7 +40,7 @@ func Init(options ...Option) {
 			handlers: map[string][]EventHandlerFunc{},
 
 			bufferSize: 100,
-			logger:     logging.MustGetLogger("eventdriver"),
+			logger:     NopLogger{},
 		}
 	)
 
