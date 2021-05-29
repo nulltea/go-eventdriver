@@ -58,8 +58,12 @@ func Init(options ...Option) {
 }
 
 // SubscribeHandler starts event loop and subscribes new handlers afterwords.
-func SubscribeHandler(event string, handler EventHandlerFunc) {
+func SubscribeHandler(event string, handler EventHandlerFunc) context.CancelFunc {
 	driver.handlers[event] = append(driver.handlers[event], handler)
+
+	return func() {
+		handler = nil
+	}
 }
 
 // EmitEvent emits event for concurrent handlers.
@@ -95,6 +99,10 @@ func (ed *EventDriver) eventLoop(ctx context.Context) {
 
 func (ed *EventDriver) executeHandlers(handlers []EventHandlerFunc, msg *EventMessage) {
 	for i := range handlers {
+		if handlers[i] == nil {
+			continue
+		} // handler has been canceled
+
 		if err := handlers[i](msg.ctx, msg.payload); err != nil {
 			if err == ErrIncorrectPayload {
 				err = errors.Wrap(err, msg.event)
