@@ -3,7 +3,7 @@ Tool for handling local communication and logic responsibility segregation in ev
 
 ## Usage
 
-```
+```go
 import (
 	"context"
 
