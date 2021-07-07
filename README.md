@@ -1,5 +1,5 @@
 # Event Driver
-Tool for handling local communication and logic responsibility segregation in eventual way.
+Go package for handling local communication and logic responsibility segregation in eventual way.
 
 ## Usage
 
