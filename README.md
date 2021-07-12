@@ -1,5 +1,10 @@
 # Event Driver
-Go package for handling local communication and logic responsibility segregation in eventual way.
+
+<p align="center">
+    <img src="https://github.com/timoth-y/go-eventdriver/blob/main/docs/go-eventdriver.png?raw=true" alt="go-eventdriver" width="400px"/>
+</p>
+
+_Go package for handling local communication and logic responsibility segregation in eventual way._
 
 ## Usage
 
