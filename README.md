@@ -1,8 +1,6 @@
 # Event Driver
 
-<p align="center">
-    <img src="https://github.com/timoth-y/go-eventdriver/blob/main/docs/go-eventdriver.png?raw=true" alt="go-eventdriver" width="400px"/>
-</p>
+<img src="https://github.com/timoth-y/go-eventdriver/blob/main/docs/go-eventdriver.png?raw=true" alt="go-eventdriver" width="400px"/>
 
 _Go package for handling local communication and logic responsibility segregation in eventual way._
 
