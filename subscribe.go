@@ -15,12 +15,12 @@ func SubscribeHandler(event string, handler EventHandlerFunc) context.CancelFunc
 func SubscribeChannel(event string) <- chan interface{} {
 	var (
 		ch = make(chan interface{})
-		handler EventHandlerFunc = func(_ context.Context, v interface{}) error {
-			ch <- v
-			return nil
-		}
 	)
 
-	driver.handlers[event] = append(driver.handlers[event], &handler)
+	SubscribeHandler(event, func(_ context.Context, v interface{}) error {
+		ch <- v
+		return nil
+	})
+
 	return ch
 }
