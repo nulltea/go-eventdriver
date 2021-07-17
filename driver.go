@@ -57,15 +57,6 @@ func Init(options ...Option) {
 	driver = ed
 }
 
-// SubscribeHandler starts event loop and subscribes new handlers afterwords.
-func SubscribeHandler(event string, handler EventHandlerFunc) context.CancelFunc {
-	driver.handlers[event] = append(driver.handlers[event], &handler)
-
-	return func() {
-		handler = nil
-	}
-}
-
 // EmitEvent emits event for concurrent handlers.
 func EmitEvent(ctx context.Context, event string, payload interface{}) {
 	driver.pipe <- &EventMessage{
